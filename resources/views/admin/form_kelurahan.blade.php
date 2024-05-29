@@ -60,27 +60,30 @@
           </div>
         </div>
         <div class="card-body">
-          <a href="{{ url('admin/kelurahan/create') }}" class="btn btn-primary">+ Tambah Kelurahan</a>
-        <table class="table table-bordered">
-            <tr class="table-info">
-                <th>Id</th>
-                <th>Nama Kelurahan</th>
-                <th>Nama Kecamatan</th>
-                <th>Aksi</th>
-            </tr>
-            @foreach ($list_kelurahan as $kelurahan)
-                <tr>
-                    <td>{{$kelurahan->id }}</td>
-                    <td>{{$kelurahan->nama }}</td>
-                    <td>{{$kelurahan->nama_kecamatan }}</td>
-                    <td>
-                        <a href="{{ url('admin/kelurahan/show', $kelurahan->id) }}" class="text-primary"><i class="far fa-eye"></i> Lihat</a> |
-                        <a href="#" class="text-warning"><i class="far fa-edit"></i> Edit</a> |
-                        <a href="#" class="text-danger"><i class="far fa-trash-alt"></i> Hapus</a>
-                    </td>
-                </tr> 
-            @endforeach
-          </table>  
+        <form class="forms-sample" action="{{ url('admin/kelurahan/store') }}" method="POST">
+          @csrf
+          <div class="form-group row">
+              <label for="nama" class="col-sm-4 col-form-label">Nama Kelurahan</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="nama" name="nama"
+                      placeholder="Masukkan Nama Kelurahan">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="nama_kecamatan" class="col-sm-4 col-form-label">Nama Kecamatan</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="nama_kecamatan" name="nama_kecamatan"
+                      placeholder="Masukkan Nama Kecamatan">
+              </div>
+          </div>
+          <div class="form-group row">
+              <div class="col-sm-4"></div>
+              <div class="col-sm-8">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <button type="reset" class="btn btn-warning">Reset</button>
+              </div>
+          </div>
+      </form>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

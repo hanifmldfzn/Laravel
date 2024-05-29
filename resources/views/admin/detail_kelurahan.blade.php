@@ -60,27 +60,24 @@
           </div>
         </div>
         <div class="card-body">
-          <a href="{{ url('admin/kelurahan/create') }}" class="btn btn-primary">+ Tambah Kelurahan</a>
-        <table class="table table-bordered">
-            <tr class="table-info">
-                <th>Id</th>
-                <th>Nama Kelurahan</th>
-                <th>Nama Kecamatan</th>
-                <th>Aksi</th>
-            </tr>
-            @foreach ($list_kelurahan as $kelurahan)
+            <table>
                 <tr>
-                    <td>{{$kelurahan->id }}</td>
-                    <td>{{$kelurahan->nama }}</td>
-                    <td>{{$kelurahan->nama_kecamatan }}</td>
-                    <td>
-                        <a href="{{ url('admin/kelurahan/show', $kelurahan->id) }}" class="text-primary"><i class="far fa-eye"></i> Lihat</a> |
-                        <a href="#" class="text-warning"><i class="far fa-edit"></i> Edit</a> |
-                        <a href="#" class="text-danger"><i class="far fa-trash-alt"></i> Hapus</a>
-                    </td>
-                </tr> 
-            @endforeach
-          </table>  
+                    <th>No</th>
+                    <th>Id</th>
+                    <th>Nama Kelurahan</th>
+                    <th>Nama Kecamatan</th>
+                    <th>Data dibuat pada</th>
+                    <th>Data diupdate pada</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>{{ $kelurahan->id }}</td>
+                    <td>{{ $kelurahan->nama }}</td>
+                    <td>{{ $kelurahan->nama_kecamatan }}</td>
+                    <td>{{ $kelurahan->create_at }}</td>
+                    <td>{{ $kelurahan->update_at }}</td>
+                </tr>
+            </table>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
