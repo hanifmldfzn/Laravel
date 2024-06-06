@@ -60,39 +60,31 @@
           </div>
         </div>
         <div class="card-body">
-          @if (session('pesan'))
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-             <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+        <form class="forms-sample" action="{{ url('admin/kelurahan/update' , $kelurahan->id) }}" method="POST">
+          @csrf
+          @method('put')
+          <div class="form-group row">
+              <label for="nama" class="col-sm-4 col-form-label">Nama Kelurahan</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="nama" name="nama"
+                      placeholder="Masukkan Nama Kelurahan" value="{{ $kelurahan->nama}}">
+              </div>
           </div>
-          @endif
-          <a href="{{ url('admin/kelurahan/create') }}" class="btn btn-primary">+ Tambah Kelurahan</a>
-        <table class="table table-bordered">
-            <tr class="table-info">
-                <th>Id</th>
-                <th>Nama Kelurahan</th>
-                <th>Nama Kecamatan</th>
-                <th>Aksi</th>
-            </tr>
-            @foreach ($list_kelurahan as $kelurahan)
-                <tr>
-                    <td>{{$kelurahan->id }}</td>
-                    <td>{{$kelurahan->nama }}</td>
-                    <td>{{$kelurahan->nama_kecamatan }}</td>
-                    <td>
-                        <a href="{{ url('admin/kelurahan/show', $kelurahan->id) }}" class="text-primary"><i class="far fa-eye"></i> Lihat</a> |
-                        <a href="{{ url('admin/kelurahan/edit', $kelurahan->id) }}" class="text-warning"><i class="far fa-edit"></i> Edit</a> |
-                        <form action="{{ url('admin/kelurahan/destory' , $kelurahan->id)}}" method="post" class="d-inline">
-                          @csrf
-                          @method('delete')
-                          <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');"><i class="far fa-trash-alt"></i>Hapus</button>
-                        </form>
-                    </td>
-                </tr> 
-            @endforeach
-          </table>  
+          <div class="form-group row">
+              <label for="nama_kecamatan" class="col-sm-4 col-form-label">Nama Kecamatan</label>
+              <div class="col-sm-8">
+                  <input type="text" class="form-control" id="nama_kecamatan" name="nama_kecamatan"
+                      placeholder="Masukkan Nama Kecamatan" value="{{ $kelurahan->nama_kecamatan}}">
+              </div>
+          </div>
+          <div class="form-group row">
+              <div class="col-sm-4"></div>
+              <div class="col-sm-8">
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <button type="reset" class="btn btn-warning">Reset</button>
+              </div>
+          </div>
+      </form>
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
